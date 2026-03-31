@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sikkim Game</title>
+
+<style>
+body{
+    background:#0f172a;
+    color:white;
+    font-family:sans-serif;
+    text-align:center;
+}
+
+.header{
+    background:linear-gradient(90deg,#4f46e5,#9333ea);
+    padding:15px;
+    font-size:22px;
+}
+
+.wallet{
+    margin:15px;
+    font-size:18px;
+}
+
+.timer{
+    font-size:30px;
+    margin:10px;
+}
+
+.btn{
+    padding:15px 25px;
+    margin:10px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    color:white;
+}
+
+.red{background:#ef4444;}
+.green{background:#22c55e;}
+.violet{background:#a855f7;}
+
+.result{
+    margin-top:15px;
+    font-size:20px;
+}
+
+.deposit{
+    background:#f59e0b;
+    margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">SIKKIM GAME</div>
+
+<div class="wallet">
+Balance: ₹<span id="balance">1000</span>
+</div>
+
+<div class="timer" id="timer">30</div>
+
+<button class="btn red" onclick="bet('RED')">RED</button>
+<button class="btn green" onclick="bet('GREEN')">GREEN</button>
+<button class="btn violet" onclick="bet('VIOLET')">VIOLET</button>
+
+<div class="result" id="result"></div>
+
+<button class="btn deposit" onclick="deposit()">Deposit</button>
+
+<script>
+let balance = 1000;
+let betColor = "";
+let timer = 30;
+
+setInterval(()=>{
+    timer--;
+    document.getElementById("timer").innerText = timer;
+
+    if(timer === 0){
+        timer = 30;
+        result();
+    }
+},1000);
+
+function bet(color){
+    if(balance < 100){
+        alert("Not enough balance");
+        return;
+    }
+
+    betColor = color;
+    balance -= 100;
+    update();
+}
+
+function result(){
+    let colors = ["RED","GREEN","VIOLET"];
+    let res = colors[Math.floor(Math.random()*3)];
+
+    if(res === betColor){
+        balance += 200;
+    }
+
+    document.getElementById("result").innerText = "Result: " + res;
+    update();
+    betColor = "";
+}
+
+function update(){
+    document.getElementById("balance").innerText = balance;
+}
+
+function deposit(){
+    alert("Demo version - no real payment");
+}
+</script>
+
+</body>
+</html>
