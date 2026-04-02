@@ -13,48 +13,91 @@ body {
     text-align:center;
 }
 
-h1 { color:#00ff88; }
-.sub { color:gold; }
-
-.box {
-    border:1px solid #00ff88;
-    padding:15px;
-    margin:10px;
-    border-radius:10px;
-}
-
-h2 {
+/* TITLE */
+h1 {
     font-size:40px;
     color:#00ff88;
+    text-shadow:0 0 15px #00ff88;
 }
 
+.sub {
+    color:gold;
+    letter-spacing:3px;
+}
+
+/* MAIN BOX */
+.box {
+    border:2px solid #00ff88;
+    border-radius:15px;
+    padding:20px;
+    margin:15px;
+    box-shadow:0 0 20px #00ff88;
+}
+
+/* BIG TEXT */
+h2 {
+    font-size:50px;
+    color:#00ff88;
+    text-shadow:0 0 20px #00ff88;
+}
+
+/* NUMBER BOX */
+.numbers {
+    border:2px dashed gold;
+    padding:10px;
+    margin-top:10px;
+    color:gold;
+}
+
+/* TABLE */
 table {
     width:100%;
     margin-top:20px;
+    border-collapse:collapse;
 }
 
-.win { color:#00ff88; }
-.loss { color:red; }
+th {
+    color:#aaa;
+}
 
+td {
+    padding:10px;
+}
+
+/* STATUS */
+.win {
+    color:#00ff88;
+    font-weight:bold;
+}
+
+.loss {
+    color:red;
+    font-weight:bold;
+}
+
+/* BUTTON */
 button {
+    padding:10px 20px;
+    margin:10px;
+    border:none;
+    border-radius:10px;
+    background:#00ff88;
+    color:#000;
+    font-weight:bold;
+}
+
+/* ADMIN PANEL */
+input {
     padding:10px;
     margin:5px;
-    border:none;
     border-radius:5px;
-    background:#00ff88;
-    cursor:pointer;
-}
-
-input {
-    padding:8px;
-    margin:5px;
+    border:none;
 }
 </style>
 </head>
 
 <body>
 
-<!-- MAIN PANEL -->
 <div id="mainPanel">
     <h1>VIP PANEL</h1>
     <p class="sub">VIP TRADER</p>
@@ -62,10 +105,13 @@ input {
     <div class="box">
         <p>PERIOD: <span id="period"></span></p>
         <h2 id="result"></h2>
-        <p>NUMBERS: <span id="numbers"></span></p>
+
+        <div class="numbers">
+            NUMBERS: <span id="numbers"></span>
+        </div>
     </div>
 
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>PRD</th>
@@ -80,10 +126,8 @@ input {
     <button onclick="openAdmin()">ADMIN PANEL</button>
 </div>
 
-
-<!-- ADMIN PANEL -->
 <div id="adminPanel" style="display:none;">
-    <h2>ADMIN CONTROL</h2>
+    <h2>ADMIN</h2>
 
     <input id="periodInput" placeholder="Period"><br>
     <input id="resultInput" placeholder="BIG/SMALL"><br>
@@ -94,9 +138,7 @@ input {
     <button onclick="back()">BACK</button>
 </div>
 
-
 <script>
-
 let data = JSON.parse(localStorage.getItem("vipData")) || {
     period:"20260325100010156",
     result:"BIG",
@@ -118,7 +160,9 @@ function load(){
             <td>${item.prd}</td>
             <td>${item.pred}</td>
             <td>${item.num}</td>
-            <td class="${item.status=='WIN'?'win':'loss'}">${item.status}</td>
+            <td class="${item.status=='WIN'?'win':'loss'}">
+                ${item.status} ${item.status=='WIN'?'🦊':'🖤'}
+            </td>
         </tr>`;
     });
 }
@@ -126,20 +170,20 @@ function load(){
 load();
 
 function openAdmin(){
-    document.getElementById("mainPanel").style.display="none";
-    document.getElementById("adminPanel").style.display="block";
+    mainPanel.style.display="none";
+    adminPanel.style.display="block";
 }
 
 function back(){
-    document.getElementById("mainPanel").style.display="block";
-    document.getElementById("adminPanel").style.display="none";
+    mainPanel.style.display="block";
+    adminPanel.style.display="none";
 }
 
 function updateData(){
-    let prd = document.getElementById("periodInput").value;
-    let res = document.getElementById("resultInput").value;
-    let num = document.getElementById("numberInput").value;
-    let status = document.getElementById("statusInput").value;
+    let prd = periodInput.value;
+    let res = resultInput.value;
+    let num = numberInput.value;
+    let status = statusInput.value;
 
     data.period = prd;
     data.result = res;
@@ -155,11 +199,9 @@ function updateData(){
     localStorage.setItem("vipData", JSON.stringify(data));
 
     alert("Updated ✅");
-
     back();
     load();
 }
-
 </script>
 
 </body>
