@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VIP PANEL</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 
@@ -30,12 +31,16 @@ body{
     max-width:420px;
 }
 
+/* CARD */
+
 .card{
     background:#fff;
     border-radius:25px;
     padding:20px;
     box-shadow:0 5px 20px rgba(0,0,0,0.08);
 }
+
+/* TITLE */
 
 .main-title{
     text-align:center;
@@ -57,6 +62,56 @@ body{
     font-size:18px;
 }
 
+/* HOME PAGE */
+
+#homePage{
+    display:none;
+}
+
+/* INPUT */
+
+.input-box{
+    border:2px solid #eef0f8;
+    border-radius:15px;
+    padding:18px;
+    margin-bottom:20px;
+}
+
+.input-box label{
+    display:block;
+    margin-bottom:10px;
+    color:#777;
+    font-weight:bold;
+}
+
+.input-box input,
+.input-box select{
+    width:100%;
+    padding:14px;
+    border:none;
+    outline:none;
+    font-size:20px;
+    background:#f7f8ff;
+    border-radius:10px;
+}
+
+/* BUTTON */
+
+.btn{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(to right,#004cff,#3a8cff);
+    color:#fff;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+/* PANEL */
+
 .box{
     background:#fff;
     border-radius:25px;
@@ -65,7 +120,7 @@ body{
     margin-bottom:20px;
 }
 
-/* TIME REMAINING */
+/* TIMER */
 
 .timer-wrapper{
     text-align:center;
@@ -110,10 +165,9 @@ body{
     font-size:38px;
     font-weight:bold;
     color:#16164a;
-    margin:0 1px;
 }
 
-/* PERIOD BOX */
+/* PERIOD */
 
 .period-box{
     width:170px;
@@ -127,7 +181,7 @@ body{
     color:#0055ff;
 }
 
-/* PREDICTION CIRCLE */
+/* PREDICTION */
 
 .circle{
     width:180px;
@@ -152,10 +206,9 @@ body{
 .circle h1{
     font-size:62px;
     color:#0055ff;
-    line-height:1;
 }
 
-/* NUMBER BOX */
+/* NUMBER */
 
 .number-box{
     width:150px;
@@ -167,56 +220,6 @@ body{
     border-radius:12px;
     font-size:24px;
     font-weight:bold;
-}
-
-/* BUTTON */
-
-.btn{
-    width:100%;
-    padding:18px;
-    border:none;
-    border-radius:14px;
-    background:linear-gradient(to right,#004cff,#3a8cff);
-    color:#fff;
-    font-size:20px;
-    font-weight:bold;
-    cursor:pointer;
-    margin-top:15px;
-}
-
-.admin-page{
-    display:none;
-}
-
-.input-box{
-    border:2px solid #eef0f8;
-    border-radius:15px;
-    padding:18px;
-    margin-bottom:20px;
-}
-
-.input-box label{
-    display:block;
-    margin-bottom:10px;
-    color:#777;
-    font-weight:bold;
-}
-
-.input-box input,
-.input-box select{
-    width:100%;
-    padding:14px;
-    border:none;
-    outline:none;
-    font-size:20px;
-    background:#f7f8ff;
-    border-radius:10px;
-}
-
-.back-btn{
-    background:#fff;
-    border:2px solid #dfe7ff;
-    color:#0055ff;
 }
 
 /* TELEGRAM */
@@ -244,8 +247,6 @@ body{
     justify-content:center;
     align-items:center;
     text-decoration:none;
-    box-shadow:0 5px 15px rgba(0,136,204,0.3);
-    transition:0.3s;
 }
 
 .telegram-link i{
@@ -253,8 +254,81 @@ body{
     font-size:32px;
 }
 
-.telegram-link:hover{
-    transform:scale(1.08);
+/* LOADING */
+
+#loadingScreen{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#f5f7ff;
+    z-index:9999;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+.loader{
+    width:70px;
+    height:70px;
+    border:8px solid #dbe7ff;
+    border-top:8px solid #0055ff;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
+
+.loading-text{
+    margin-top:25px;
+    color:#0055ff;
+    font-size:28px;
+    font-weight:bold;
+}
+
+@keyframes spin{
+
+0%{
+transform:rotate(0deg);
+}
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+/* POPUP */
+
+.popup{
+    position:fixed;
+    top:-120px;
+    left:50%;
+    transform:translateX(-50%);
+    background:white;
+    padding:18px 25px;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    display:flex;
+    align-items:center;
+    gap:12px;
+    z-index:99999;
+    transition:0.4s;
+}
+
+.popup.show{
+    top:30px;
+}
+
+.popup i{
+    color:red;
+    font-size:28px;
+}
+
+.popup span{
+    font-size:18px;
+    font-weight:bold;
+    color:#222;
 }
 
 </style>
@@ -262,7 +336,65 @@ body{
 
 <body>
 
+<!-- POPUP -->
+
+<div class="popup" id="popup">
+
+<i class="fa-solid fa-circle-xmark"></i>
+
+<span>WRONG PASSWORD</span>
+
+</div>
+
+<!-- LOADING -->
+
+<div id="loadingScreen">
+
+<div class="loader"></div>
+
+<div class="loading-text">
+LOADING...
+</div>
+
+</div>
+
 <div class="container">
+
+<!-- LOCK SCREEN -->
+
+<div class="card" id="lockScreen">
+
+<div class="main-title">
+<h1>LOCK</h1>
+<p>ENTER PANEL</p>
+</div>
+
+<div class="input-box">
+<label>Username</label>
+
+<input type="text"
+id="username"
+placeholder="Enter Username">
+
+</div>
+
+<div class="input-box">
+<label>Password</label>
+
+<input type="password"
+id="password"
+placeholder="Enter Password">
+
+</div>
+
+<button class="btn"
+onclick="unlockPanel()">
+
+UNLOCK
+
+</button>
+
+</div>
 
 <!-- HOME PAGE -->
 
@@ -274,8 +406,6 @@ body{
 </div>
 
 <div class="box">
-
-<!-- TIME REMAINING -->
 
 <div class="timer-wrapper">
 
@@ -297,23 +427,19 @@ Time remaining
 
 </div>
 
-<!-- PERIOD -->
-
 <div class="period-box">
-PERIOD: <span id="periodText">333</span>
+PERIOD:
+<span id="periodText">333</span>
 </div>
-
-<!-- PREDICTION -->
 
 <div class="circle">
 <span>PREDICTION</span>
 <h1 id="bigSmallText">BIG</h1>
 </div>
 
-<!-- NUMBER -->
-
 <div class="number-box">
-NUMBER: <span id="numberText">6</span>
+NUMBER:
+<span id="numberText">6</span>
 </div>
 
 </div>
@@ -332,15 +458,20 @@ class="telegram-link">
 
 </div>
 
-<button class="btn" onclick="openAdmin()">
+<button class="btn"
+onclick="openAdmin()">
+
 ADMIN PANEL
+
 </button>
 
 </div>
 
 <!-- ADMIN PAGE -->
 
-<div class="card admin-page" id="adminPage">
+<div class="card"
+id="adminPage"
+style="display:none;">
 
 <div class="main-title">
 <h1>ADMIN</h1>
@@ -349,43 +480,64 @@ ADMIN PANEL
 
 <div class="input-box">
 <label>Period</label>
-<input type="text" placeholder="Enter Period" id="periodInput">
+
+<input type="text"
+id="periodInput"
+placeholder="Enter Period">
+
 </div>
 
 <div class="input-box">
+
 <label>BIG / SMALL</label>
 
 <select id="bigSmallInput">
+
 <option>BIG</option>
 <option>SMALL</option>
+
 </select>
 
 </div>
 
 <div class="input-box">
-<label>Number (0 to 9)</label>
+
+<label>Number</label>
 
 <select id="numberInput">
+
 <option>0</option>
 <option>1</option>
 <option>2</option>
 <option>3</option>
 <option>4</option>
 <option>5</option>
-<option selected>6</option>
+<option>6</option>
 <option>7</option>
 <option>8</option>
 <option>9</option>
+
 </select>
 
 </div>
 
-<button class="btn" onclick="updateData()">
+<button class="btn"
+onclick="updateData()">
+
 UPDATE
+
 </button>
 
-<button class="btn back-btn" onclick="closeAdmin()">
+<button class="btn"
+style="
+background:white;
+color:#0055ff;
+border:2px solid #dfe7ff;
+"
+onclick="closeAdmin()">
+
 BACK
+
 </button>
 
 </div>
@@ -394,41 +546,103 @@ BACK
 
 <script>
 
-function openAdmin(){
+/* UNLOCK */
 
-    document.getElementById('homePage').style.display='none';
-    document.getElementById('adminPage').style.display='block';
+function unlockPanel(){
+
+    let username =
+    document.getElementById("username").value;
+
+    let password =
+    document.getElementById("password").value;
+
+    if(username === "TRADERX"
+    && password === "UNLOCK888"){
+
+        document.getElementById("loadingScreen")
+        .style.display="flex";
+
+        setTimeout(()=>{
+
+            document.getElementById("loadingScreen")
+            .style.display="none";
+
+            document.getElementById("lockScreen")
+            .style.display="none";
+
+            document.getElementById("homePage")
+            .style.display="block";
+
+        },2500);
+
+    }else{
+
+        let popup =
+        document.getElementById("popup");
+
+        popup.classList.add("show");
+
+        setTimeout(()=>{
+
+            popup.classList.remove("show");
+
+        },2500);
+
+    }
 
 }
+
+/* OPEN ADMIN */
+
+function openAdmin(){
+
+    document.getElementById("homePage")
+    .style.display="none";
+
+    document.getElementById("adminPage")
+    .style.display="block";
+
+}
+
+/* CLOSE ADMIN */
 
 function closeAdmin(){
 
-    document.getElementById('adminPage').style.display='none';
-    document.getElementById('homePage').style.display='block';
+    document.getElementById("adminPage")
+    .style.display="none";
+
+    document.getElementById("homePage")
+    .style.display="block";
 
 }
 
+/* UPDATE DATA */
+
 function updateData(){
 
-    let period = document.getElementById('periodInput').value;
+    let period =
+    document.getElementById("periodInput").value;
 
-    let bigsmall = document.getElementById('bigSmallInput').value;
+    let bigsmall =
+    document.getElementById("bigSmallInput").value;
 
-    let number = document.getElementById('numberInput').value;
+    let number =
+    document.getElementById("numberInput").value;
 
-    document.getElementById('periodText').innerText = period;
+    document.getElementById("periodText")
+    .innerText = period;
 
-    document.getElementById('bigSmallText').innerText = bigsmall;
+    document.getElementById("bigSmallText")
+    .innerText = bigsmall;
 
-    document.getElementById('numberText').innerText = number;
-
-    alert("Updated Successfully");
+    document.getElementById("numberText")
+    .innerText = number;
 
     closeAdmin();
 
 }
 
-/* LIVE COUNTDOWN */
+/* TIMER */
 
 function updateCountdown(){
 
@@ -438,14 +652,23 @@ function updateCountdown(){
 
     const mins = 0;
 
-    const minuteString = String(mins).padStart(2,'0');
-    const secondString = String(seconds).padStart(2,'0');
+    const minuteString =
+    String(mins).padStart(2,'0');
 
-    document.getElementById("min1").innerText = minuteString[0];
-    document.getElementById("min2").innerText = minuteString[1];
+    const secondString =
+    String(seconds).padStart(2,'0');
 
-    document.getElementById("sec1").innerText = secondString[0];
-    document.getElementById("sec2").innerText = secondString[1];
+    document.getElementById("min1").innerText =
+    minuteString[0];
+
+    document.getElementById("min2").innerText =
+    minuteString[1];
+
+    document.getElementById("sec1").innerText =
+    secondString[0];
+
+    document.getElementById("sec2").innerText =
+    secondString[1];
 
 }
 
