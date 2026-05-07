@@ -5,203 +5,435 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VIP PANEL</title>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <style>
-body {
-    background:#fff; /* changed */
-    color:#000; /* changed for visibility */
-    font-family:Arial;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f7ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:420px;
+}
+
+.card{
+    background:#fff;
+    border-radius:25px;
+    padding:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.main-title{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.main-title h1{
+    font-size:55px;
+    font-weight:900;
+    background:linear-gradient(to bottom,#4ea1ff,#003cff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.main-title p{
+    margin-top:10px;
+    color:#0055ff;
+    letter-spacing:5px;
+    font-size:18px;
+}
+
+.box{
+    background:#fff;
+    border-radius:25px;
+    padding:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.07);
+    margin-bottom:20px;
+}
+
+.period-box{
+    background:#f4f6ff;
+    padding:12px 20px;
+    border-radius:12px;
+    width:fit-content;
+    margin:auto;
+    font-weight:bold;
+    margin-bottom:25px;
+}
+
+.circle{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background:#eef2ff;
+    margin:20px auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.circle span{
+    color:#0055ff;
+    font-size:22px;
+}
+
+.circle h1{
+    font-size:90px;
+    color:#0055ff;
+}
+
+.number-box{
+    background:linear-gradient(to right,#004cff,#3a8cff);
+    color:white;
+    padding:18px;
+    text-align:center;
+    border-radius:14px;
+    font-size:35px;
+    font-weight:bold;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
     text-align:center;
 }
 
-/* TITLE */
-h1 {
-    font-size:40px;
-    color:#007bff; /* changed */
-    text-shadow:0 0 15px #007bff; /* changed */
-}
-
-.sub {
-    color:gold;
-    letter-spacing:3px;
-}
-
-/* MAIN BOX */
-.box {
-    border:2px solid #007bff; /* changed */
-    border-radius:15px;
-    padding:20px;
-    margin:15px;
-    box-shadow:0 0 20px #007bff; /* changed */
-}
-
-/* BIG TEXT */
-h2 {
-    font-size:50px;
-    color:#007bff; /* changed */
-    text-shadow:0 0 20px #007bff; /* changed */
-}
-
-/* NUMBER BOX */
-.numbers {
-    border:2px dashed gold;
+.grid div{
     padding:10px;
-    margin-top:10px;
-    color:gold;
 }
 
-/* TABLE */
-table {
+.grid i{
+    color:#0055ff;
+    font-size:25px;
+    margin-bottom:10px;
+}
+
+.grid h4{
+    color:#666;
+    margin-bottom:10px;
+}
+
+.grid p{
+    font-size:28px;
+    font-weight:bold;
+}
+
+.btn{
     width:100%;
-    margin-top:20px;
-    border-collapse:collapse;
-}
-
-th {
-    color:#555; /* adjusted for white bg */
-}
-
-td {
-    padding:10px;
-}
-
-/* STATUS */
-.win {
-    color:#007bff; /* changed */
-    font-weight:bold;
-}
-
-.loss {
-    color:red;
-    font-weight:bold;
-}
-
-/* BUTTON */
-button {
-    padding:10px 20px;
-    margin:10px;
+    padding:18px;
     border:none;
-    border-radius:10px;
-    background:#007bff; /* changed */
-    color:#fff; /* changed */
+    border-radius:14px;
+    background:linear-gradient(to right,#004cff,#3a8cff);
+    color:#fff;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+.admin-page{
+    display:none;
+}
+
+.input-box{
+    border:2px solid #eef0f8;
+    border-radius:15px;
+    padding:18px;
+    margin-bottom:20px;
+}
+
+.input-box label{
+    display:block;
+    margin-bottom:10px;
+    color:#777;
     font-weight:bold;
 }
 
-/* ADMIN PANEL */
-input {
-    padding:10px;
-    margin:5px;
-    border-radius:5px;
-    border:1px solid #ccc; /* slight visible fix */
+.input-box input,
+.input-box select{
+    width:100%;
+    padding:14px;
+    border:none;
+    outline:none;
+    font-size:20px;
+    background:#f7f8ff;
+    border-radius:10px;
 }
+
+.back-btn{
+    background:#fff;
+    border:2px solid #dfe7ff;
+    color:#0055ff;
+}
+
+/* TELEGRAM BOX */
+
+.telegram-box{
+    width:100%;
+    padding:20px;
+    border-radius:18px;
+    margin-top:10px;
+    margin-bottom:15px;
+    background:#ffffff;
+    border:2px solid #e5e7ff;
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.telegram-link{
+    width:90px;
+    height:90px;
+    border-radius:25px;
+    background:linear-gradient(to bottom,#38bdf8,#0284c7);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    box-shadow:0 5px 15px rgba(0,136,204,0.3);
+    transition:0.3s;
+}
+
+.telegram-link i{
+    color:white;
+    font-size:42px;
+}
+
+.telegram-link:hover{
+    transform:scale(1.08);
+}
+
 </style>
 </head>
 
 <body>
 
-<div id="mainPanel">
-    <h1>VIP PANEL</h1>
-    <p class="sub">VIP TRADER</p>
+<div class="container">
 
-    <div class="box">
-        <p>PERIOD: <span id="period"></span></p>
-        <h2 id="result"></h2>
+<!-- HOME PAGE -->
 
-        <div class="numbers">
-            NUMBERS: <span id="numbers"></span>
-        </div>
-    </div>
+<div class="card" id="homePage">
 
-    <table>
-        <thead>
-            <tr>
-                <th>PRD</th>
-                <th>PRED</th>
-                <th>NUM</th>
-                <th>STATUS</th>
-            </tr>
-        </thead>
-        <tbody id="history"></tbody>
-    </table>
-
-    <button onclick="openAdmin()">ADMIN PANEL</button>
+<div class="main-title">
+<h1>VIP PANEL</h1>
+<p>GOD_X TRADER'S</p>
 </div>
 
-<div id="adminPanel" style="display:none;">
-    <h2>ADMIN</h2>
+<div class="box">
 
-    <input id="periodInput" placeholder="Period"><br>
-    <input id="resultInput" placeholder="BIG/SMALL"><br>
-    <input id="numberInput" placeholder="Number"><br>
-    <input id="statusInput" placeholder="WIN/LOSS"><br>
+<div class="period-box">
+PERIOD: <span id="periodText">333</span>
+</div>
 
-    <button onclick="updateData()">UPDATE</button>
-    <button onclick="back()">BACK</button>
+<div class="circle">
+<span>PREDICTION</span>
+<h1 id="bigSmallText">BIG</h1>
+</div>
+
+<div class="number-box">
+NUMBER: <span id="numberText">6</span>
+</div>
+
+</div>
+
+<div class="box">
+
+<div class="grid">
+
+<div>
+<i class="fa-regular fa-calendar"></i>
+<h4>PRD</h4>
+<p id="prd2">333</p>
+</div>
+
+<div>
+<i class="fa-solid fa-chart-line"></i>
+<h4>PRED</h4>
+<p id="pred2">BIG</p>
+</div>
+
+<div>
+<i class="fa-solid fa-hashtag"></i>
+<h4>NUM</h4>
+<p id="num2">6</p>
+</div>
+
+<div>
+<i class="fa-solid fa-trophy"></i>
+<h4>STATUS</h4>
+<p id="statusText" style="color:green;">WIN</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- TELEGRAM BOX -->
+
+<div class="telegram-box">
+
+<a href="https://t.me/+bQmuA4xDeOQyMmFl"
+target="_blank"
+class="telegram-link">
+
+<i class="fa-brands fa-telegram"></i>
+
+</a>
+
+</div>
+
+<button class="btn" onclick="openAdmin()">
+ADMIN PANEL
+</button>
+
+</div>
+
+<!-- ADMIN PAGE -->
+
+<div class="card admin-page" id="adminPage">
+
+<div class="main-title">
+<h1>ADMIN</h1>
+<p>UPDATE PREDICTION</p>
+</div>
+
+<div class="input-box">
+<label>Period</label>
+<input type="text" placeholder="Enter Period" id="periodInput">
+</div>
+
+<div class="input-box">
+<label>BIG / SMALL</label>
+
+<select id="bigSmallInput">
+<option>BIG</option>
+<option>SMALL</option>
+</select>
+
+</div>
+
+<div class="input-box">
+<label>Number (0 to 9)</label>
+
+<select id="numberInput">
+<option>0</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option selected>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+</select>
+
+</div>
+
+<div class="input-box">
+<label>STATUS</label>
+
+<select id="statusInput">
+<option value="WIN">WIN</option>
+<option value="LOSS">LOSS</option>
+<option value="">BLANK</option>
+</select>
+
+</div>
+
+<button class="btn" onclick="updateData()">
+UPDATE
+</button>
+
+<button class="btn back-btn" onclick="closeAdmin()">
+BACK
+</button>
+
+</div>
+
 </div>
 
 <script>
-let data = JSON.parse(localStorage.getItem("vipData")) || {
-    period:"20260325100010156",
-    result:"BIG",
-    numbers:"9,3",
-    history:[]
-};
-
-function load(){
-    document.getElementById("period").innerText = data.period;
-    document.getElementById("result").innerText = data.result;
-    document.getElementById("numbers").innerText = data.numbers;
-
-    let table = document.getElementById("history");
-    table.innerHTML = "";
-
-    data.history.slice().reverse().forEach(item=>{
-        table.innerHTML += `
-        <tr>
-            <td>${item.prd}</td>
-            <td>${item.pred}</td>
-            <td>${item.num}</td>
-            <td class="${item.status=='WIN'?'win':'loss'}">
-                ${item.status} ${item.status=='WIN'?'🦊':'🖤'}
-            </td>
-        </tr>`;
-    });
-}
-
-load();
 
 function openAdmin(){
-    mainPanel.style.display="none";
-    adminPanel.style.display="block";
+
+    document.getElementById('homePage').style.display='none';
+    document.getElementById('adminPage').style.display='block';
+
 }
 
-function back(){
-    mainPanel.style.display="block";
-    adminPanel.style.display="none";
+function closeAdmin(){
+
+    document.getElementById('adminPage').style.display='none';
+    document.getElementById('homePage').style.display='block';
+
 }
 
 function updateData(){
-    let prd = periodInput.value;
-    let res = resultInput.value;
-    let num = numberInput.value;
-    let status = statusInput.value;
 
-    data.period = prd;
-    data.result = res;
-    data.numbers = num;
+    let period = document.getElementById('periodInput').value;
 
-    data.history.push({
-        prd: prd.slice(-3),
-        pred: res,
-        num: num,
-        status: status
-    });
+    let bigsmall = document.getElementById('bigSmallInput').value;
 
-    localStorage.setItem("vipData", JSON.stringify(data));
+    let number = document.getElementById('numberInput').value;
 
-    alert("Updated ✅");
-    back();
-    load();
+    let status = document.getElementById('statusInput').value;
+
+    document.getElementById('periodText').innerText = period;
+
+    document.getElementById('bigSmallText').innerText = bigsmall;
+
+    document.getElementById('numberText').innerText = number;
+
+    document.getElementById('prd2').innerText = period;
+
+    document.getElementById('pred2').innerText = bigsmall;
+
+    document.getElementById('num2').innerText = number;
+
+    document.getElementById('statusText').innerText = status;
+
+    if(status == "WIN"){
+
+        document.getElementById('statusText').style.color = "green";
+
+    }
+
+    else if(status == "LOSS"){
+
+        document.getElementById('statusText').style.color = "red";
+
+    }
+
+    else{
+
+        document.getElementById('statusText').style.color = "black";
+
+    }
+
+    alert("Updated Successfully");
+
+    closeAdmin();
+
 }
+
 </script>
 
 </body>
