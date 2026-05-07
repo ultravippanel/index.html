@@ -13,7 +13,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
 }
 
 body{
@@ -65,74 +65,111 @@ body{
     margin-bottom:20px;
 }
 
-.period-box{
-    background:#f4f6ff;
-    padding:12px 20px;
-    border-radius:12px;
-    width:fit-content;
-    margin:auto;
-    font-weight:bold;
-    margin-bottom:25px;
+/* TIME REMAINING */
+
+.timer-wrapper{
+    text-align:center;
+    margin-bottom:18px;
 }
 
+.timer-title{
+    font-size:16px;
+    font-weight:bold;
+    color:#111;
+    margin-bottom:8px;
+}
+
+.timer-box{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:5px;
+}
+
+.time-card{
+    width:38px;
+    height:60px;
+    background:#16164a;
+    color:white;
+    font-size:40px;
+    font-weight:bold;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    clip-path:polygon(
+        0 0,
+        100% 0,
+        100% 82%,
+        86% 100%,
+        0 100%
+    );
+    border-radius:5px;
+}
+
+.colon{
+    font-size:38px;
+    font-weight:bold;
+    color:#16164a;
+    margin:0 1px;
+}
+
+/* PERIOD BOX */
+
+.period-box{
+    width:170px;
+    margin:auto;
+    text-align:center;
+    background:#f4f6ff;
+    padding:10px 14px;
+    border-radius:12px;
+    font-weight:bold;
+    margin-bottom:20px;
+    color:#0055ff;
+}
+
+/* PREDICTION CIRCLE */
+
 .circle{
-    width:220px;
-    height:220px;
+    width:180px;
+    height:180px;
     border-radius:50%;
     background:#eef2ff;
-    margin:20px auto;
+    margin:15px auto;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
+    text-align:center;
 }
 
 .circle span{
     color:#0055ff;
-    font-size:22px;
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:8px;
 }
 
 .circle h1{
-    font-size:90px;
+    font-size:62px;
     color:#0055ff;
+    line-height:1;
 }
+
+/* NUMBER BOX */
 
 .number-box{
+    width:150px;
+    margin:auto;
     background:linear-gradient(to right,#004cff,#3a8cff);
     color:white;
-    padding:18px;
+    padding:12px;
     text-align:center;
-    border-radius:14px;
-    font-size:35px;
+    border-radius:12px;
+    font-size:24px;
     font-weight:bold;
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-    text-align:center;
-}
-
-.grid div{
-    padding:10px;
-}
-
-.grid i{
-    color:#0055ff;
-    font-size:25px;
-    margin-bottom:10px;
-}
-
-.grid h4{
-    color:#666;
-    margin-bottom:10px;
-}
-
-.grid p{
-    font-size:28px;
-    font-weight:bold;
-}
+/* BUTTON */
 
 .btn{
     width:100%;
@@ -182,12 +219,12 @@ body{
     color:#0055ff;
 }
 
-/* TELEGRAM BOX */
+/* TELEGRAM */
 
 .telegram-box{
     width:100%;
-    padding:20px;
-    border-radius:18px;
+    padding:12px;
+    border-radius:16px;
     margin-top:10px;
     margin-bottom:15px;
     background:#ffffff;
@@ -199,9 +236,9 @@ body{
 }
 
 .telegram-link{
-    width:90px;
-    height:90px;
-    border-radius:25px;
+    width:65px;
+    height:65px;
+    border-radius:18px;
     background:linear-gradient(to bottom,#38bdf8,#0284c7);
     display:flex;
     justify-content:center;
@@ -213,7 +250,7 @@ body{
 
 .telegram-link i{
     color:white;
-    font-size:42px;
+    font-size:32px;
 }
 
 .telegram-link:hover{
@@ -238,14 +275,42 @@ body{
 
 <div class="box">
 
+<!-- TIME REMAINING -->
+
+<div class="timer-wrapper">
+
+<div class="timer-title">
+Time remaining
+</div>
+
+<div class="timer-box">
+
+<div class="time-card" id="min1">0</div>
+<div class="time-card" id="min2">0</div>
+
+<div class="colon">:</div>
+
+<div class="time-card" id="sec1">5</div>
+<div class="time-card" id="sec2">9</div>
+
+</div>
+
+</div>
+
+<!-- PERIOD -->
+
 <div class="period-box">
 PERIOD: <span id="periodText">333</span>
 </div>
+
+<!-- PREDICTION -->
 
 <div class="circle">
 <span>PREDICTION</span>
 <h1 id="bigSmallText">BIG</h1>
 </div>
+
+<!-- NUMBER -->
 
 <div class="number-box">
 NUMBER: <span id="numberText">6</span>
@@ -253,39 +318,7 @@ NUMBER: <span id="numberText">6</span>
 
 </div>
 
-<div class="box">
-
-<div class="grid">
-
-<div>
-<i class="fa-regular fa-calendar"></i>
-<h4>PRD</h4>
-<p id="prd2">333</p>
-</div>
-
-<div>
-<i class="fa-solid fa-chart-line"></i>
-<h4>PRED</h4>
-<p id="pred2">BIG</p>
-</div>
-
-<div>
-<i class="fa-solid fa-hashtag"></i>
-<h4>NUM</h4>
-<p id="num2">6</p>
-</div>
-
-<div>
-<i class="fa-solid fa-trophy"></i>
-<h4>STATUS</h4>
-<p id="statusText" style="color:green;">WIN</p>
-</div>
-
-</div>
-
-</div>
-
-<!-- TELEGRAM BOX -->
+<!-- TELEGRAM -->
 
 <div class="telegram-box">
 
@@ -347,17 +380,6 @@ ADMIN PANEL
 
 </div>
 
-<div class="input-box">
-<label>STATUS</label>
-
-<select id="statusInput">
-<option value="WIN">WIN</option>
-<option value="LOSS">LOSS</option>
-<option value="">BLANK</option>
-</select>
-
-</div>
-
 <button class="btn" onclick="updateData()">
 UPDATE
 </button>
@@ -394,45 +416,42 @@ function updateData(){
 
     let number = document.getElementById('numberInput').value;
 
-    let status = document.getElementById('statusInput').value;
-
     document.getElementById('periodText').innerText = period;
 
     document.getElementById('bigSmallText').innerText = bigsmall;
 
     document.getElementById('numberText').innerText = number;
 
-    document.getElementById('prd2').innerText = period;
-
-    document.getElementById('pred2').innerText = bigsmall;
-
-    document.getElementById('num2').innerText = number;
-
-    document.getElementById('statusText').innerText = status;
-
-    if(status == "WIN"){
-
-        document.getElementById('statusText').style.color = "green";
-
-    }
-
-    else if(status == "LOSS"){
-
-        document.getElementById('statusText').style.color = "red";
-
-    }
-
-    else{
-
-        document.getElementById('statusText').style.color = "black";
-
-    }
-
     alert("Updated Successfully");
 
     closeAdmin();
 
 }
+
+/* LIVE COUNTDOWN */
+
+function updateCountdown(){
+
+    const now = new Date();
+
+    const seconds = 59 - now.getSeconds();
+
+    const mins = 0;
+
+    const minuteString = String(mins).padStart(2,'0');
+    const secondString = String(seconds).padStart(2,'0');
+
+    document.getElementById("min1").innerText = minuteString[0];
+    document.getElementById("min2").innerText = minuteString[1];
+
+    document.getElementById("sec1").innerText = secondString[0];
+    document.getElementById("sec2").innerText = secondString[1];
+
+}
+
+setInterval(updateCountdown,1000);
+
+updateCountdown();
 
 </script>
 
