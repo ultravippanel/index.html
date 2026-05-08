@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VIP PANEL</title>
 
 <link rel="stylesheet"
@@ -86,7 +84,8 @@ body{
     font-weight:bold;
 }
 
-.input-box input{
+.input-box input,
+.input-box select{
     width:100%;
     padding:14px;
     border:none;
@@ -168,6 +167,20 @@ body{
     color:#16164a;
 }
 
+/* PERIOD */
+
+.period-box{
+    width:170px;
+    margin:auto;
+    text-align:center;
+    background:#f4f6ff;
+    padding:10px 14px;
+    border-radius:12px;
+    font-weight:bold;
+    margin-bottom:20px;
+    color:#0055ff;
+}
+
 /* PREDICTION */
 
 .circle{
@@ -195,6 +208,20 @@ body{
     color:#0055ff;
 }
 
+/* NUMBER */
+
+.number-box{
+    width:150px;
+    margin:auto;
+    background:linear-gradient(to right,#004cff,#3a8cff);
+    color:white;
+    padding:12px;
+    text-align:center;
+    border-radius:12px;
+    font-size:24px;
+    font-weight:bold;
+}
+
 /* TELEGRAM */
 
 .telegram-box{
@@ -202,6 +229,7 @@ body{
     padding:12px;
     border-radius:16px;
     margin-top:10px;
+    margin-bottom:15px;
     background:#ffffff;
     border:2px solid #e5e7ff;
     box-shadow:0 5px 15px rgba(0,0,0,0.05);
@@ -342,7 +370,6 @@ LOADING...
 </div>
 
 <div class="input-box">
-
 <label>Username</label>
 
 <input type="text"
@@ -352,7 +379,6 @@ placeholder="Enter Username">
 </div>
 
 <div class="input-box">
-
 <label>Password</label>
 
 <input type="password"
@@ -401,14 +427,19 @@ Time remaining
 
 </div>
 
+<div class="period-box">
+PERIOD:
+<span id="periodText">333</span>
+</div>
+
 <div class="circle">
-
 <span>PREDICTION</span>
+<h1 id="bigSmallText">BIG</h1>
+</div>
 
-<h1 id="bigSmallText">
-BIG
-</h1>
-
+<div class="number-box">
+NUMBER:
+<span id="numberText">6</span>
 </div>
 
 </div>
@@ -424,6 +455,90 @@ class="telegram-link">
 <i class="fa-brands fa-telegram"></i>
 
 </a>
+
+</div>
+
+<button class="btn"
+onclick="openAdmin()">
+
+ADMIN PANEL
+
+</button>
+
+</div>
+
+<!-- ADMIN PAGE -->
+
+<div class="card"
+id="adminPage"
+style="display:none;">
+
+<div class="main-title">
+<h1>ADMIN</h1>
+<p>UPDATE PREDICTION</p>
+</div>
+
+<div class="input-box">
+<label>Period</label>
+
+<input type="text"
+id="periodInput"
+placeholder="Enter Period">
+
+</div>
+
+<div class="input-box">
+
+<label>BIG / SMALL</label>
+
+<select id="bigSmallInput">
+
+<option>BIG</option>
+<option>SMALL</option>
+
+</select>
+
+</div>
+
+<div class="input-box">
+
+<label>Number</label>
+
+<select id="numberInput">
+
+<option>0</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+
+</select>
+
+</div>
+
+<button class="btn"
+onclick="updateData()">
+
+UPDATE
+
+</button>
+
+<button class="btn"
+style="
+background:white;
+color:#0055ff;
+border:2px solid #dfe7ff;
+"
+onclick="closeAdmin()">
+
+BACK
+
+</button>
 
 </div>
 
@@ -477,18 +592,53 @@ function unlockPanel(){
 
 }
 
-/* AUTO PREDICTION */
+/* OPEN ADMIN */
 
-function generatePrediction(){
+function openAdmin(){
 
-    let randomNumber =
-    Math.floor(Math.random()*10);
+    document.getElementById("homePage")
+    .style.display="none";
 
-    let result =
-    randomNumber >= 5 ? "BIG" : "SMALL";
+    document.getElementById("adminPage")
+    .style.display="block";
+
+}
+
+/* CLOSE ADMIN */
+
+function closeAdmin(){
+
+    document.getElementById("adminPage")
+    .style.display="none";
+
+    document.getElementById("homePage")
+    .style.display="block";
+
+}
+
+/* UPDATE DATA */
+
+function updateData(){
+
+    let period =
+    document.getElementById("periodInput").value;
+
+    let bigsmall =
+    document.getElementById("bigSmallInput").value;
+
+    let number =
+    document.getElementById("numberInput").value;
+
+    document.getElementById("periodText")
+    .innerText = period;
 
     document.getElementById("bigSmallText")
-    .innerText = result;
+    .innerText = bigsmall;
+
+    document.getElementById("numberText")
+    .innerText = number;
+
+    closeAdmin();
 
 }
 
@@ -519,12 +669,6 @@ function updateCountdown(){
 
     document.getElementById("sec2").innerText =
     secondString[1];
-
-    if(seconds === 0){
-
-        generatePrediction();
-
-    }
 
 }
 
